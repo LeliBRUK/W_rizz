@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        body {
+            background-color: rgb(31, 31, 31);
+        }
+        
+        h1 {
+            position: absolute;
+            top:30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+        }
+        #weeee{
+            position: absolute;
+            top: 50%;
+            left: 40%;
+            transform: translate(-50%, -50%);
+            height: 4rem;
+            width: 10rem;
+            font-size: 1.5rem;
+            border-radius: 5px;
+            border: none;
+            box-shadow: 1px 1px 5px black;
+            background-color: white;
+        }
+
+        #runaway-btn {
+            position: absolute;
+            top: 50%;
+            left: 60%;
+            transform: translate(-50%, -50%);
+            height: 4rem;
+            width: 10rem;
+            font-size: 1.5rem;
+            border-radius: 5px;
+            border: none;
+            box-shadow: 1px 1px 5px black;
+            background-color: white;
+        }
+    </style>
+    <meta charset="utf8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+            const button = document.getElementById('runaway-btn');
+
+            const animateMove = (element, prop, pixels) =>
+                anime({
+                    targets: element,
+                    [prop]: `${pixels}px`,
+                    easing: "easeOutCirc"
+                });
+
+            ["mouseover", "click"].forEach(function (el) {
+                button.addEventListener(el, function (event) {
+                    const top = getRandomNumber(window.innerHeight - this.offsetHeight);
+                    const left = getRandomNumber(window.innerWidth - this.offsetWidth);
+
+                    animateMove(this, "left", left).play();
+                    animateMove(this, "top", top).play();
+                });
+            });
+
+            const getRandomNumber = (num) => {
+                return Math.floor(Math.random() * (num + 1));
+            };
+        };
+    </script>
+</head>
+
+<body>
+    <div id="buttons">
+        <h1>אתה מחבב אותי</h1>
+        <button id='weeee' onclick="location.href='https://www.youtube.com/watch?v=p5fnHWznTBQ&ab_channel=I-WatchEverythingOnRepeat'">כן</button>
+        <button id='runaway-btn'>לא</button>
+    </div>
+</body>
+
+</html>
